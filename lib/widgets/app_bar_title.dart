@@ -1,35 +1,43 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../res/costom_colors.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Image.asset(
-          'assets/firebase_logo.png',
-          height: 20,
-        ),
-        const SizedBox(width: 8),
-        const Text(
-          'FlutterFire',
-          style: TextStyle(
-            color: CustomColors.firebaseYellow,
-            fontSize: 18,
+    const List<String> _popmenu_list = ["テスト", "ログアウト"];
+    return AppBar(
+        // leading: Icon(Icons.home),
+        title: const Text('ページタイトル'),
+        backgroundColor: Colors.white12,
+        centerTitle: true,
+        elevation: 0.0,
+        automaticallyImplyLeading: false,
+
+        // 右上メニューボタン
+        actions: <Widget>[
+          // overflow menu
+          PopupMenuButton<String>(
+            icon: const Icon(Icons.menu),
+            onSelected: (String s) {
+              if (s == 'ログアウト') {
+                FirebaseAuth.instance.signOut();
+
+                Navigator.of(context).pushNamed("/signin");
+                // Navigator.of(context).popUntil((route) => route.isFirst);
+              }
+            },
+            itemBuilder: (BuildContext context) {
+              return _popmenu_list.map((String s) {
+                return PopupMenuItem(
+                  child: Text(s),
+                  value: s,
+                );
+              }).toList();
+            },
           ),
-        ),
-        const Text(
-          ' Authentication',
-          style: TextStyle(
-            color: CustomColors.firebaseOrange,
-            fontSize: 18,
-          ),
-        ),
-      ],
-    );
+        ],
+      );
   }
 }

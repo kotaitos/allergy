@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../res/costom_colors.dart';
+import '../widgets/app_bar_title.dart';
+
 // [Themelist] インスタンスにおける処理。
 class Home extends StatelessWidget {
   final String _uid =
@@ -21,36 +24,9 @@ class Home extends StatelessWidget {
     return Scaffold(
       // Header部分
       appBar: AppBar(
-        // leading: Icon(Icons.home),
-        title: const Text('ページタイトル'),
-        backgroundColor: Colors.black87,
-        centerTitle: true,
-        elevation: 0.0,
-        automaticallyImplyLeading: false,
-
-        // 右上メニューボタン
-        actions: <Widget>[
-          // overflow menu
-          PopupMenuButton<String>(
-            icon: const Icon(Icons.menu),
-            onSelected: (String s) {
-              if (s == 'ログアウト') {
-                FirebaseAuth.instance.signOut();
-
-                Navigator.of(context).pushNamed("/signin");
-                // Navigator.of(context).popUntil((route) => route.isFirst);
-              }
-            },
-            itemBuilder: (BuildContext context) {
-              return _popmenu_list.map((String s) {
-                return PopupMenuItem(
-                  child: Text(s),
-                  value: s,
-                );
-              }).toList();
-            },
-          ),
-        ],
+        elevation: 0,
+        backgroundColor: CustomColors.firebaseNavy,
+        title: const AppBarTitle(),
       ),
 
       // メイン画面
