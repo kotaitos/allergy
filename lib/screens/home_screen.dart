@@ -23,11 +23,10 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       // Header部分
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: CustomColors.firebaseNavy,
-      //   title: const AppBarTitle(),
-      // ),
+      appBar: AppBar(
+        elevation: 0,
+        title: const AppBarTitle(),
+      ),
 
       // メイン画面
       body: Center(
