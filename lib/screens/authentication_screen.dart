@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import '../utils/authenication_error.dart';
 import '../utils/registration.dart';
-import '../screens/home_screen.dart';
+import '../tab_page.dart';
 import '../utils/email_check.dart';
 
 class Authentication extends StatefulWidget {
@@ -42,7 +42,8 @@ class _Authentication extends State<Authentication> {
             Padding(
               padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 10.0),
               child: TextFormField(
-                maxLengthEnforcement: MaxLengthEnforcement.none, decoration: const InputDecoration(labelText: "パスワード（8～20文字）"),
+                maxLengthEnforcement: MaxLengthEnforcement.none,
+                decoration: const InputDecoration(labelText: "パスワード（8～20文字）"),
                 obscureText: true, // パスワードが見えないようRにする
                 maxLength: 20, // 入力可能な文字数の制限を超える場合の挙動の制御
                 onChanged: (String value) {
@@ -97,7 +98,7 @@ class _Authentication extends State<Authentication> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Home(),
+                            builder: (context) => TabPage(),
                           ));
                     } else {
                       Navigator.push(

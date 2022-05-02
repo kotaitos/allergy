@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/authentication_screen.dart';
-import 'screens/home_screen.dart';
-import './firebase_options.dart';
+import 'tab_page.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,13 +16,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified) {
+    if (FirebaseAuth.instance.currentUser != null &&
+        FirebaseAuth.instance.currentUser!.emailVerified) {
       return MaterialApp(
         title: 'Firebase Auth',
-        home: Home(),
+        home: TabPage(),
         routes: <String, WidgetBuilder>{
           '/signin': (_) => Authentication(),
-          '/home': (_) => Home(),
+          '/tab': (_) => TabPage(),
         },
       );
     } else {
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         home: Authentication(),
         routes: <String, WidgetBuilder>{
           '/signin': (_) => Authentication(),
-          '/home': (_) => Home(),
+          '/tab': (_) => TabPage(),
         },
       );
     }
