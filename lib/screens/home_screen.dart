@@ -23,11 +23,11 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       // Header部分
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: CustomColors.firebaseNavy,
-        title: const AppBarTitle(),
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: CustomColors.firebaseNavy,
+      //   title: const AppBarTitle(),
+      // ),
 
       // メイン画面
       body: Center(
@@ -35,7 +35,8 @@ class Home extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 20.0),
             child: Text(_uid,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
           SizedBox(
             width: 300.0,
@@ -49,7 +50,7 @@ class Home extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: const Text('ボタン１'),
+                child: const Text('ログアウト'),
 
                 // ボタン１の処理内容（ポップアップを出し、何かを入力させる。）
                 onPressed: () async {
@@ -58,16 +59,7 @@ class Home extends StatelessWidget {
                       builder: (context) {
                         child:
                         return AlertDialog(
-                          title: const Text('ダイアログ　タイトル'),
-                          content: TextField(
-                            //controller: dateTextController,
-                            decoration: const InputDecoration(
-                              hintText: '入力項目１',
-                            ),
-                            autofocus: true,
-                            // keyboardType: TextInputType.number,
-                            controller: _roomnameController,
-                          ),
+                          title: const Text('ログアウトしますか？'),
                           actions: <Widget>[
                             TextButton(
                                 child: const Text('キャンセル'),
@@ -77,57 +69,8 @@ class Home extends StatelessWidget {
                             TextButton(
                                 child: const Text('OK'),
                                 onPressed: () {
-                                  Navigator.pop(context);
-                                  print(_roomnameController);
-                                }),
-                          ],
-                        );
-                      });
-                }),
-          ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(0, 20.0, 0, 0),
-            child: Text('または'),
-          ),
-          SizedBox(
-            width: 300.0,
-            height: 40.0,
-            child: ElevatedButton(
-                // ボタンの形状や背景色など
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.orange, // background-color
-                  onPrimary: Colors.white, //text-color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: const Text('ボタン２'),
-                // ボタン２の処理内容（ポップアップを出し、何かを入力させる。）
-                onPressed: () async {
-                  await showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text('ダイアログ　タイトル'),
-                          content: TextField(
-                            //controller: dateTextController,
-                            decoration: const InputDecoration(
-                              hintText: '入力項目２',
-                            ),
-                            autofocus: true,
-                            // keyboardType: TextInputType.number,
-                            controller: _roomnameController,
-                          ),
-                          actions: <Widget>[
-                            TextButton(
-                                child: const Text('キャンセル'),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                            TextButton(
-                                child: const Text('OK'),
-                                onPressed: () {
-                                  Navigator.pop(context);
+                                  FirebaseAuth.instance.signOut();
+                                  Navigator.of(context).pushNamed("/signin");
                                 }),
                           ],
                         );
