@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import './authenication_error.dart';
-import 'email_check.dart';
+import '../utils/authentication_error.dart';
+import '../utils/email_check.dart';
 
 // アカウント登録ページ
-class Registration extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
   @override
-  _RegistrationState createState() => _RegistrationState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _RegistrationState extends State<Registration> {
+class _SignupScreenState extends State<SignupScreen> {
   // Firebase Authenticationを利用するためのインスタンス
 
   String _newEmail = ""; // 入力されたメールアドレス
@@ -43,7 +43,11 @@ class _RegistrationState extends State<Registration> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Padding(padding: EdgeInsets.fromLTRB(25.0, 0, 25.0, 30.0), child: Text('新規アカウントの作成', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+              const Padding(
+                  padding: EdgeInsets.fromLTRB(25.0, 0, 25.0, 30.0),
+                  child: Text('新規アカウントの作成',
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold))),
 
               // メールアドレスの入力フォーム
               Padding(
@@ -59,7 +63,9 @@ class _RegistrationState extends State<Registration> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 10.0),
                 child: TextFormField(
-                    maxLengthEnforcement: MaxLengthEnforcement.none, decoration: const InputDecoration(labelText: "パスワード（8～20文字）"),
+                    maxLengthEnforcement: MaxLengthEnforcement.none,
+                    decoration:
+                        const InputDecoration(labelText: "パスワード（8～20文字）"),
                     obscureText: true, // パスワードが見えないようRにする
                     maxLength: 20, // 入力可能な文字数の制限を超える場合の挙動の制御
                     onChanged: (String value) {
@@ -104,7 +110,8 @@ class _RegistrationState extends State<Registration> {
                     if (_pswd_OK) {
                       try {
                         // メール/パスワードでユーザー登録
-                        UserCredential _result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        UserCredential _result = await FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
                           email: _newEmail,
                           password: _newPassword,
                         );
@@ -115,12 +122,16 @@ class _RegistrationState extends State<Registration> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Emailcheck(email: _newEmail, pswd: _newPassword, from: 1),
+                              builder: (context) => Emailcheck(
+                                  email: _newEmail,
+                                  pswd: _newPassword,
+                                  from: 1),
                             ));
                       } catch (e) {
                         // 登録に失敗した場合
                         setState(() {
-                          _infoText = auth_error.register_error_msg(e.hashCode, e.toString());
+                          _infoText = auth_error.register_error_msg(
+                              e.hashCode, e.toString());
                         });
                       }
                     } else {

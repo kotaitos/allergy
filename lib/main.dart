@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'screens/authentication_screen.dart';
+import 'screens/signin_screen.dart';
 import 'tab_page.dart';
 import 'firebase_options.dart';
 
@@ -22,16 +22,16 @@ class MyApp extends StatelessWidget {
         title: 'Firebase Auth',
         home: TabPage(),
         routes: <String, WidgetBuilder>{
-          '/signin': (_) => Authentication(),
+          '/signin': (_) => SigninScreen(),
           '/tab': (_) => TabPage(),
         },
       );
     } else {
       return MaterialApp(
         title: 'Firebase Auth',
-        home: Authentication(),
+        home: SigninScreen(),
         routes: <String, WidgetBuilder>{
-          '/signin': (_) => Authentication(),
+          '/signin': (_) => SigninScreen(),
           '/tab': (_) => TabPage(),
         },
       );

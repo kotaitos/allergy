@@ -133,7 +133,7 @@ class _Emailcheck extends State<Emailcheck> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Home(),
+                          builder: (context) => HomeScreen(),
                         ));
                   } else {
                     // print('NG');
