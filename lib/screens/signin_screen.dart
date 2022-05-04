@@ -27,10 +27,29 @@ class _SigninScreen extends State<SigninScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("サインイン"),
+        backgroundColor: Colors.blue,
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            const Padding(
+                padding: EdgeInsets.fromLTRB(25.0, 0, 25.0, 30.0),
+                child: Text('サインイン',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
+
             // メールアドレスの入力フォーム
             Padding(
                 padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 0),

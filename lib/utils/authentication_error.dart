@@ -23,7 +23,7 @@ class AuthenticationError {
   }
 
   // アカウント登録時の日本語エラーメッセージ
-  register_error_msg(int error_code, String org_error_msg) {
+  signup_error_msg(int error_code, String org_error_msg) {
     String error_msg;
 
     if (error_code == 360587416) {

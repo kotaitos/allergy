@@ -15,8 +15,10 @@ class _SignupScreenState extends State<SignupScreen> {
 
   String _newEmail = ""; // 入力されたメールアドレス
   String _newPassword = ""; // 入力されたパスワード
+  String _newPasswordVerify = ""; //入力された確認用パスワード
   String _infoText = ""; // 登録に関する情報を表示
   bool _pswd_OK = false; // パスワードが有効な文字数を満たしているかどうか
+  bool _pswdvrfy_OK = false; // パスワードが有効な文字数を満たしているかどうか
 
   // エラーメッセージを日本語化するためのクラス
   final auth_error = AuthenticationError();
@@ -51,7 +53,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
               // メールアドレスの入力フォーム
               Padding(
-                  padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 0),
+                  padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 20.0),
                   child: TextFormField(
                     decoration: const InputDecoration(labelText: "メールアドレス"),
                     onChanged: (String value) {
@@ -61,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
               // パスワードの入力フォーム
               Padding(
-                padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 10.0),
+                padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 0),
                 child: TextFormField(
                     maxLengthEnforcement: MaxLengthEnforcement.none,
                     decoration:
@@ -74,6 +76,24 @@ class _SignupScreenState extends State<SignupScreen> {
                         _pswd_OK = true;
                       } else {
                         _pswd_OK = false;
+                      }
+                    }),
+              ),
+
+              // 確認用パスワードの入力フォーム
+              Padding(
+                padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 10.0),
+                child: TextFormField(
+                    maxLengthEnforcement: MaxLengthEnforcement.none,
+                    decoration: const InputDecoration(labelText: "パスワード確認用"),
+                    obscureText: true, // パスワードが見えないようRにする
+                    maxLength: 20, // 入力可能な文字数の制限を超える場合の挙動の制御
+                    onChanged: (String value) {
+                      if (value.length >= 8) {
+                        _newPasswordVerify = value;
+                        _pswdvrfy_OK = true;
+                      } else {
+                        _pswdvrfy_OK = false;
                       }
                     }),
               ),
@@ -107,32 +127,38 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   onPressed: () async {
-                    if (_pswd_OK) {
-                      try {
-                        // メール/パスワードでユーザー登録
-                        UserCredential _result = await FirebaseAuth.instance
-                            .createUserWithEmailAndPassword(
-                          email: _newEmail,
-                          password: _newPassword,
-                        );
-
-                        // 登録成功
-                        User _user = _result.user!; // 登録したユーザー情報
-                        _user.sendEmailVerification(); // Email確認のメールを送信
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Emailcheck(
-                                  email: _newEmail,
-                                  pswd: _newPassword,
-                                  from: 1),
-                            ));
-                      } catch (e) {
-                        // 登録に失敗した場合
+                    if (_pswd_OK && _pswdvrfy_OK) {
+                      if (_newPassword != _newPasswordVerify) {
                         setState(() {
-                          _infoText = auth_error.register_error_msg(
-                              e.hashCode, e.toString());
+                          _infoText = 'パスワードが一致しません。';
                         });
+                      } else {
+                        try {
+                          // メール/パスワードでユーザー登録
+                          UserCredential _result = await FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                            email: _newEmail,
+                            password: _newPassword,
+                          );
+
+                          // 登録成功
+                          User _user = _result.user!; // 登録したユーザー情報
+                          _user.sendEmailVerification(); // Email確認のメールを送信
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Emailcheck(
+                                    email: _newEmail,
+                                    pswd: _newPassword,
+                                    from: 1),
+                              ));
+                        } catch (e) {
+                          // 登録に失敗した場合
+                          setState(() {
+                            _infoText = auth_error.signup_error_msg(
+                                e.hashCode, e.toString());
+                          });
+                        }
                       }
                     } else {
                       setState(() {
