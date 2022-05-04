@@ -21,7 +21,7 @@ class TabPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: <Widget>[
-            Home(),
+            HomeScreen(),
             Accounts(),
           ],
         ),

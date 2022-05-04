@@ -3,17 +3,20 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import '../utils/authenication_error.dart';
-import '../utils/registration.dart';
+import '../res/costom_colors.dart';
+import '../utils/authentication.dart';
+import '../utils/authentication_error.dart';
+import '../widgets/google_sign_in_button.dart';
+import 'signup_screen.dart';
 import '../tab_page.dart';
 import '../utils/email_check.dart';
 
-class Authentication extends StatefulWidget {
+class SigninScreen extends StatefulWidget {
   @override
-  _Authentication createState() => _Authentication();
+  _SigninScreen createState() => _SigninScreen();
 }
 
-class _Authentication extends State<Authentication> {
+class _SigninScreen extends State<SigninScreen> {
   String _signin_Email = ""; // 入力されたメールアドレス
   String _signin_Password = ""; // 入力されたパスワード
   String _infoText = ""; // ログインに関する情報を表示
@@ -127,6 +130,25 @@ class _Authentication extends State<Authentication> {
               onPressed: () => FirebaseAuth.instance
                   .sendPasswordResetEmail(email: _signin_Email),
             ),
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(25.0, 25.0, 25.0, 25.0),
+              child: FutureBuilder(
+                future: Authentication.initializeFirebase(context: context),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text('Error initializing Firebase');
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    return const GoogleSignInButton();
+                  }
+                  return const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      CustomColors.firebaseOrange,
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
@@ -153,12 +175,12 @@ class _Authentication extends State<Authentication> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
 
-                // ボタンクリック後にアカウント作成用の画面の遷移する。
+                // ボタンクリック後にアカウント作成用の画面に遷移する。
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       fullscreenDialog: true,
-                      builder: (BuildContext context) => Registration(),
+                      builder: (BuildContext context) => SignupScreen(),
                     ),
                   );
                 }),
