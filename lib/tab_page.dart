@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './screens/home_screen.dart';
-import './screens/accounts_screen.dart';
+import './ui/home_screen.dart';
+import './ui/accounts_screen.dart';
 
 class TabPage extends StatelessWidget {
   final _tab = <Tab>[

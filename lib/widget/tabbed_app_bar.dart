@@ -5,7 +5,6 @@ class AppBarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const List<String> _popmenu_list = ["テスト", "ログアウト"];
     return AppBar(
       // leading: Icon(Icons.home),
       title: const Text('allergy'),
