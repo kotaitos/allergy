@@ -1,6 +1,7 @@
 # allergy
 人情コンテストで作成するアプリ \
-[オンラインホワイトボードmiroのリンク](https://miro.com/app/board/uXjVO71WSsE=/)
+[オンラインホワイトボードmiroのリンク](https://miro.com/app/board/uXjVO71WSsE=/)\
+アレルギー情報を共有しやすくするアプリ
 
 ## 環境
 Flutter 2.10.5\
