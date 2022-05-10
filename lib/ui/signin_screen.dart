@@ -3,13 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import '../res/costom_colors.dart';
-import '../utils/authentication.dart';
-import '../utils/authentication_error.dart';
-import '../widgets/google_sign_in_button.dart';
 import 'signup_screen.dart';
+import '../res/costom_colors.dart';
+import '../util/authentication.dart';
+import '../util/authentication_error.dart';
+import '../util/email_check.dart';
+import '../widget/google_sign_in_button.dart';
 import '../tab_page.dart';
-import '../utils/email_check.dart';
 
 class SigninScreen extends StatefulWidget {
   @override

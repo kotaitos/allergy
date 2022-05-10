@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../widgets/tabbed_app_bar.dart';
+import '../widget/tabbed_app_bar.dart';
 
 // [Themelist] インスタンスにおける処理。
 class Accounts extends StatelessWidget {
@@ -38,7 +38,6 @@ class Accounts extends StatelessWidget {
                   await showDialog(
                       context: context,
                       builder: (context) {
-                        child:
                         return AlertDialog(
                           title: const Text('ログアウトしますか？'),
                           actions: <Widget>[
