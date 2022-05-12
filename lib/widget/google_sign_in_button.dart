@@ -1,4 +1,7 @@
+import 'package:allergy/tab_page.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../util/authentication.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({Key? key}) : super(key: key);
@@ -9,7 +12,7 @@ class GoogleSignInButton extends StatefulWidget {
 
 class _GoogleSignInButtonState extends State<GoogleSignInButton> {
   bool _isSigningIn = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,8 +32,26 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
               ),
               onPressed: () async {
                 setState(() {
-                  _isSigningIn = false;
+                  _isSigningIn = true;
                 });
+
+                try {
+                  User? user =
+                      await Authentication.signInWithGoogle(context: context);
+                  if (user != null) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => TabPage(),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  rethrow;
+                } finally {
+                  setState(() {
+                    _isSigningIn = false;
+                  });
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
