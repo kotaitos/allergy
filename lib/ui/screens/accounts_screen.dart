@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // [Themelist] インスタンスにおける処理。
-class Accounts extends StatelessWidget {
+class AccountsScreen extends StatelessWidget {
   final String _uid =
       FirebaseAuth.instance.currentUser?.uid.toString() ?? 'ログインユーザー名取得失敗';
 

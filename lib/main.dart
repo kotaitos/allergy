@@ -1,9 +1,9 @@
+import 'package:allergy/ui/widgets/bottom_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:allergy/l10n/l10n.dart';
 import 'ui/screens/signin_screen.dart';
-import 'tab_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
         title: 'allergy',
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
-        home: TabPage(),
+        home: MyStatefulWidget(),
         routes: <String, WidgetBuilder>{
           '/signin': (_) => SigninScreen(),
-          '/tab': (_) => TabPage(),
+          '/tab': (_) => MyStatefulWidget(),
         },
       );
     } else {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         home: SigninScreen(),
         routes: <String, WidgetBuilder>{
           '/signin': (_) => SigninScreen(),
-          '/tab': (_) => TabPage(),
+          '/tab': (_) => MyStatefulWidget(),
         },
       );
     }
