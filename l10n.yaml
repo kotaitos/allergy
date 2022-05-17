@@ -1,0 +1,5 @@
+arb-dir: lib/l10n
+template-arb-file: app_ja.arb
+output-class: L10n # 任意の設定値 設定した値で多言語化対応文字列を呼び出すことができる
+output-localization-file: l10n.dart
+synthetic-package: false

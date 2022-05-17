@@ -1,3 +1,4 @@
+import 'package:allergy/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -25,9 +26,10 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("アカウント作成"),
+        title: Text(l10n.ui__signup__title),
         backgroundColor: Colors.blue,
         centerTitle: true,
         elevation: 0.0,
@@ -45,17 +47,18 @@ class _SignupScreenState extends State<SignupScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Padding(
-                  padding: EdgeInsets.fromLTRB(25.0, 0, 25.0, 30.0),
-                  child: Text('新規アカウントの作成',
-                      style: TextStyle(
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 30.0),
+                  child: Text(l10n.ui__signup__title,
+                      style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold))),
 
               // メールアドレスの入力フォーム
               Padding(
                   padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 20.0),
                   child: TextFormField(
-                    decoration: const InputDecoration(labelText: "メールアドレス"),
+                    decoration:
+                        InputDecoration(labelText: l10n.ui__signup__mail),
                     onChanged: (String value) {
                       _newEmail = value;
                     },
@@ -67,7 +70,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: TextFormField(
                     maxLengthEnforcement: MaxLengthEnforcement.none,
                     decoration:
-                        const InputDecoration(labelText: "パスワード（8～20文字）"),
+                        InputDecoration(labelText: l10n.ui__signup__password),
                     obscureText: true, // パスワードが見えないようRにする
                     maxLength: 20, // 入力可能な文字数の制限を超える場合の挙動の制御
                     onChanged: (String value) {
@@ -85,7 +88,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 10.0),
                 child: TextFormField(
                     maxLengthEnforcement: MaxLengthEnforcement.none,
-                    decoration: const InputDecoration(labelText: "パスワード確認用"),
+                    decoration: InputDecoration(
+                        labelText: l10n.ui__signup__verify_password),
                     obscureText: true, // パスワードが見えないようRにする
                     maxLength: 20, // 入力可能な文字数の制限を超える場合の挙動の制御
                     onChanged: (String value) {
@@ -122,15 +126,15 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
 
                   // ボタン内の文字と書式
-                  child: const Text(
-                    '登録',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  child: Text(
+                    l10n.ui__signup__button1,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   onPressed: () async {
                     if (_pswd_OK && _pswdvrfy_OK) {
                       if (_newPassword != _newPasswordVerify) {
                         setState(() {
-                          _infoText = 'パスワードが一致しません。';
+                          _infoText = l10n.ui__signup__password_is_not_matched;
                         });
                       } else {
                         try {
@@ -162,7 +166,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       }
                     } else {
                       setState(() {
-                        _infoText = 'パスワードは8文字以上です。';
+                        _infoText = l10n
+                            .ui__signup__password_is_not__8_or_more_characters;
                       });
                     }
                   },

@@ -1,0 +1,25 @@
+{
+  "@@locale": "ja",
+
+  "ui__accounts__button1": "ログアウト",
+  "ui__accounts__popup1__to_logout": "ログアウトしますか？",
+  "ui__accounts__popup1__cancel": "キャンセル",
+  "ui__accounts__popup1__ok": "OK",
+
+  "ui__home__title": "ホーム画面",
+
+  "ui__signin__title": "サインイン",
+  "ui__signin__mail": "メールアドレス",
+  "ui__signin__password": "パスワード（８〜２０文字）",
+  "ui__signin__button1": "サインイン",
+  "ui__signin__reset_mail": "上記メールアドレスにパスワード再設定メールを送信",
+  "ui__signin__button2": "アカウントを作成する",
+
+  "ui__signup__title": "サインアップ",
+  "ui__signup__mail": "メールアドレス",
+  "ui__signup__password": "パスワード（８〜２０文字）",
+  "ui__signup__verify_password": "パスワード確認用",
+  "ui__signup__button1": "サインアップ",
+  "ui__signup__password_is_not_matched": "パスワードが一致しません。",
+  "ui__signup__password_is_not__8_or_more_characters": "パスワードは8文字以上です。"
+}

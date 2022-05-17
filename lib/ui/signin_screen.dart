@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:allergy/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +13,8 @@ import '../widget/google_sign_in_button.dart';
 import '../tab_page.dart';
 
 class SigninScreen extends StatefulWidget {
+  const SigninScreen({Key? key}) : super(key: key);
+
   @override
   _SigninScreen createState() => _SigninScreen();
 }
@@ -26,9 +29,11 @@ class _SigninScreen extends State<SigninScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("サインイン"),
+        title: Text(l10n.ui__signin__title),
         backgroundColor: Colors.blue,
         centerTitle: true,
         elevation: 0.0,
@@ -44,9 +49,9 @@ class _SigninScreen extends State<SigninScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const Padding(
+            Padding(
                 padding: EdgeInsets.fromLTRB(25.0, 0, 25.0, 30.0),
-                child: Text('サインイン',
+                child: Text(l10n.ui__signin__title,
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
 
@@ -54,7 +59,7 @@ class _SigninScreen extends State<SigninScreen> {
             Padding(
                 padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 0),
                 child: TextFormField(
-                  decoration: const InputDecoration(labelText: "メールアドレス"),
+                  decoration: InputDecoration(labelText: l10n.ui__signin__mail),
                   onChanged: (String value) {
                     _signin_Email = value;
                   },
@@ -65,7 +70,8 @@ class _SigninScreen extends State<SigninScreen> {
               padding: const EdgeInsets.fromLTRB(25.0, 0, 25.0, 10.0),
               child: TextFormField(
                 maxLengthEnforcement: MaxLengthEnforcement.none,
-                decoration: const InputDecoration(labelText: "パスワード（8～20文字）"),
+                decoration:
+                    InputDecoration(labelText: l10n.ui__signin__password),
                 obscureText: true, // パスワードが見えないようRにする
                 maxLength: 20, // 入力可能な文字数の制限を超える場合の挙動の制御
                 onChanged: (String value) {
@@ -98,8 +104,8 @@ class _SigninScreen extends State<SigninScreen> {
                 ),
 
                 // ボタン内の文字と書式
-                child: const Text(
-                  'ログイン',
+                child: Text(
+                  l10n.ui__signin__button1,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
 
@@ -145,7 +151,7 @@ class _SigninScreen extends State<SigninScreen> {
 
             // ログイン失敗時のエラーメッセージ
             TextButton(
-              child: const Text('上記メールアドレスにパスワード再設定メールを送信'),
+              child: Text(l10n.ui__signin__reset_mail),
               onPressed: () => FirebaseAuth.instance
                   .sendPasswordResetEmail(email: _signin_Email),
             ),
@@ -189,8 +195,8 @@ class _SigninScreen extends State<SigninScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: const Text(
-                  'アカウントを作成する',
+                child: Text(
+                  l10n.ui__signin__button2,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
 
