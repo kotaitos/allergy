@@ -1,6 +1,7 @@
 import 'package:allergy/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 // [Themelist] インスタンスにおける処理。
 class HomeScreen extends StatelessWidget {
@@ -22,6 +23,13 @@ class HomeScreen extends StatelessWidget {
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20.0),
+            child: QrImage(
+                data: 'https://www.kamo-it.org/blog/36/',
+                version: QrVersions.auto,
+                size: 200.0),
+          )
         ]),
       ),
     );

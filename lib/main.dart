@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:allergy/l10n/l10n.dart';
-import 'ui/signin_screen.dart';
+import 'ui/screens/signin_screen.dart';
 import 'tab_page.dart';
 import 'firebase_options.dart';
 
