@@ -1,0 +1,25 @@
+{
+  "@@locale": "en",
+
+  "ui__accounts__button1": "signout",
+  "ui__accounts__popup1__to_logout": "Do you want to sign out?",
+  "ui__accounts__popup1__cancel": "cancel",
+  "ui__accounts__popup1__ok": "OK",
+
+  "ui__home__title": "Home",
+
+  "ui__signin__title": "signin",
+  "ui__signin__mail": "mail",
+  "ui__signin__password": "Password (8 to 20 characters)",
+  "ui__signin__button1": "signin",
+  "ui__signin__reset_mail": "Send a password reset email to the above email address",
+  "ui__signin__button2": "Create an account",
+  
+  "ui__signup__title": "signup",
+  "ui__signup__mail": "mail",
+  "ui__signup__password": "Password (8 to 20 characters）",
+  "ui__signup__verify_password": "password confirmation",
+  "ui__signup__button1": "signup",
+  "ui__signup__password_is_not_matched": "Password does not match.",
+  "ui__signup__password_is_not__8_or_more_characters": "Password must be at least 8 characters."
+}

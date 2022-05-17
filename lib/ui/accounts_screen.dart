@@ -1,3 +1,4 @@
+import 'package:allergy/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../widget/tabbed_app_bar.dart';
@@ -9,6 +10,7 @@ class Accounts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context)!;
     return Scaffold(
       // メイン画面
       body: Center(
@@ -31,7 +33,7 @@ class Accounts extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: const Text('ログアウト'),
+                child: Text(l10n.ui__accounts__button1),
 
                 // ボタン１の処理内容（ポップアップを出し、何かを入力させる。）
                 onPressed: () async {
@@ -39,15 +41,15 @@ class Accounts extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          title: const Text('ログアウトしますか？'),
+                          title: Text(l10n.ui__accounts__popup1__to_logout),
                           actions: <Widget>[
                             TextButton(
-                                child: const Text('キャンセル'),
+                                child: Text(l10n.ui__accounts__popup1__cancel),
                                 onPressed: () {
                                   Navigator.pop(context);
                                 }),
                             TextButton(
-                                child: const Text('OK'),
+                                child: Text(l10n.ui__accounts__popup1__ok),
                                 onPressed: () {
                                   FirebaseAuth.instance.signOut();
                                   Navigator.of(context).pushNamed("/signin");
