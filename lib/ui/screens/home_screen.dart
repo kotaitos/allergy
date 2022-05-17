@@ -36,9 +36,9 @@ class HomeScreen extends StatelessWidget {
             child: ElevatedButton(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.qr_code_scanner),
-                  Text('QRコードをスキャンする'),
+                children: [
+                  const Icon(Icons.qr_code_scanner),
+                  Text(l10n.ui__home__scan_qr),
                 ],
               ),
               style: ElevatedButton.styleFrom(
@@ -54,9 +54,9 @@ class HomeScreen extends StatelessWidget {
             child: ElevatedButton(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.push_pin),
-                  Text('アレルギーを登録する'),
+                children: [
+                  const Icon(Icons.push_pin),
+                  Text(l10n.ui__home__register_allergy),
                 ],
               ),
               style: ElevatedButton.styleFrom(

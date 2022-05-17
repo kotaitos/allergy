@@ -8,6 +8,8 @@
 
   "ui__home__title": "ホーム画面",
   "ui__home__your_qr": "あなたのQRコード",
+  "ui__home__scan_qr": "QRコードをスキャンする",
+  "ui__home__register_allergy": "アレルギーを登録する",
 
   "ui__signin__title": "サインイン",
   "ui__signin__mail": "メールアドレス",
