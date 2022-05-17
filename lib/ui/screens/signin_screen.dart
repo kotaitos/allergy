@@ -9,7 +9,7 @@ import '../../res/costom_colors.dart';
 import '../../util/authentication.dart';
 import '../../util/authentication_error.dart';
 import '../../util/email_check.dart';
-import '../widget/google_sign_in_button.dart';
+import '../widgets/google_sign_in_button.dart';
 import '../../tab_page.dart';
 
 class SigninScreen extends StatefulWidget {
