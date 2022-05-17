@@ -7,6 +7,7 @@
   "ui__accounts__popup1__ok": "OK",
 
   "ui__home__title": "Home",
+  "ui__home__your_qr": "Your QR code",
 
   "ui__signin__title": "signin",
   "ui__signin__mail": "mail",
