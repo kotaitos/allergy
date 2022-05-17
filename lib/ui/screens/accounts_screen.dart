@@ -1,7 +1,6 @@
 import 'package:allergy/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../widget/tabbed_app_bar.dart';
 
 // [Themelist] インスタンスにおける処理。
 class Accounts extends StatelessWidget {
