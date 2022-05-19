@@ -4,14 +4,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class QrScanView extends StatefulWidget {
-  const QrScanView({Key? key}) : super(key: key);
+import '../../l10n/l10n.dart';
+
+class QrScanModal extends StatefulWidget {
+  const QrScanModal({Key? key}) : super(key: key);
 
   @override
   _QrScanViewState createState() => _QrScanViewState();
 }
 
-class _QrScanViewState extends State<QrScanView> {
+class _QrScanViewState extends State<QrScanModal> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
 
@@ -34,13 +36,24 @@ class _QrScanViewState extends State<QrScanView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('QR読み取り'),
-        centerTitle: true,
-      ),
-      body: _buildQrView(context),
-    );
+    final l10n = L10n.of(context)!;
+    return Container(
+        margin: const EdgeInsets.only(top: 64),
+        decoration: const BoxDecoration(
+          //モーダル自体の色
+          color: Colors.white,
+          //角丸にする
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: Scaffold(
+            appBar: AppBar(
+              title: Text(l10n.views__qr_scan_modal__title),
+              centerTitle: true,
+            ),
+            body: SafeArea(child: _buildQrView(context))));
   }
 
   Widget _buildQrView(BuildContext context) {
@@ -74,10 +87,11 @@ class _QrScanViewState extends State<QrScanView> {
   }
 
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
+    final l10n = L10n.of(context)!;
     log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
     if (!p) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('no Permission')),
+        SnackBar(content: Text(l10n.views__qr_scan_modal__no_permission)),
       );
     }
   }

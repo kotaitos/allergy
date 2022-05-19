@@ -9,6 +9,7 @@
   "ui__home__title": "ホーム画面",
   "ui__home__your_qr": "あなたのQRコード",
   "ui__home__scan_qr": "QRコードをスキャンする",
+  "ui__home__share": "共有する",
   "ui__home__register_allergy": "アレルギーを登録する",
 
   "ui__signin__title": "サインイン",
@@ -24,5 +25,13 @@
   "ui__signup__verify_password": "パスワード確認用",
   "ui__signup__button1": "サインアップ",
   "ui__signup__password_is_not_matched": "パスワードが一致しません。",
-  "ui__signup__password_is_not__8_or_more_characters": "パスワードは8文字以上です。"
+  "ui__signup__password_is_not__8_or_more_characters": "パスワードは8文字以上です。",
+
+  "views__registration_modal__title": "アレルギー登録",
+
+  "views__qr_scan_modal__title": "QR読み取り",
+  "views__qr_scan_modal__no_permission": "カメラの権限がありません",
+
+  "widgets__share_button__share": "シェア",
+  "widgets__share_button__copy": "コピー"
 }

@@ -9,6 +9,7 @@
   "ui__home__title": "Home",
   "ui__home__your_qr": "Your QR code",
   "ui__home__scan_qr": "Scan QR code",
+  "ui__home__share": "Share",
   "ui__home__register_allergy": "Register your allergy",
 
   "ui__signin__title": "signin",
@@ -24,5 +25,13 @@
   "ui__signup__verify_password": "password confirmation",
   "ui__signup__button1": "signup",
   "ui__signup__password_is_not_matched": "Password does not match.",
-  "ui__signup__password_is_not__8_or_more_characters": "Password must be at least 8 characters."
+  "ui__signup__password_is_not__8_or_more_characters": "Password must be at least 8 characters.",
+
+  "views__registration_modal__title": "Register your allergy",
+
+  "views__qr_scan_modal__title": "Scan QR code",
+  "views__qr_scan_modal__no_permission": "no Permission",
+
+  "widgets__share_button__share": "Share",
+  "widgets__share_button__copy": "Copy"
 }
