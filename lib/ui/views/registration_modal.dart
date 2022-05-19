@@ -19,15 +19,19 @@ class RegistrationModal extends StatelessWidget {
           ),
         ),
         child: Scaffold(
+            appBar: AppBar(
+              title: Text(l10n.views__registration_modal__title),
+              centerTitle: true,
+            ),
             body: SafeArea(
                 child: Center(
                     child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20.0),
-            child: Text(l10n.views__registration_modal__title,
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          ),
-        ])))));
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 20.0),
+                child: Text(l10n.views__registration_modal__title,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold)),
+              ),
+            ])))));
   }
 }
