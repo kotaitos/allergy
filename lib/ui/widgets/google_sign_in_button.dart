@@ -1,7 +1,7 @@
-import 'package:allergy/tab_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../util/authentication.dart';
+import '../../util/authentication.dart';
+import 'bottom_navigation_bar.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   const GoogleSignInButton({Key? key}) : super(key: key);
@@ -41,7 +41,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                   if (user != null) {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (context) => TabPage(),
+                        builder: (context) => MyStatefulWidget(),
                       ),
                     );
                   }

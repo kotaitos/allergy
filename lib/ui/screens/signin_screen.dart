@@ -4,13 +4,13 @@ import 'package:allergy/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import '../widgets/bottom_navigation_bar.dart';
 import 'signup_screen.dart';
-import '../res/costom_colors.dart';
-import '../util/authentication.dart';
-import '../util/authentication_error.dart';
-import '../util/email_check.dart';
-import '../widget/google_sign_in_button.dart';
-import '../tab_page.dart';
+import '../../res/costom_colors.dart';
+import '../../util/authentication.dart';
+import '../../util/authentication_error.dart';
+import '../../util/email_check.dart';
+import '../widgets/google_sign_in_button.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({Key? key}) : super(key: key);
@@ -126,7 +126,7 @@ class _SigninScreen extends State<SigninScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => TabPage(),
+                            builder: (context) => MyStatefulWidget(),
                           ));
                     } else {
                       Navigator.push(

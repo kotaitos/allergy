@@ -2,8 +2,8 @@ import 'package:allergy/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import '../util/authentication_error.dart';
-import '../util/email_check.dart';
+import '../../util/authentication_error.dart';
+import '../../util/email_check.dart';
 
 // アカウント登録ページ
 class SignupScreen extends StatefulWidget {
