@@ -1,4 +1,5 @@
 import 'package:allergy/l10n/l10n.dart';
+import 'package:allergy/ui/screens/signin_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -33,13 +34,7 @@ class _SignupScreenState extends State<SignupScreen> {
         backgroundColor: Colors.blue,
         centerTitle: true,
         elevation: 0.0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.white,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Container(
@@ -177,6 +172,39 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
         ),
       ),
+      bottomNavigationBar:
+          Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+            width: 350.0,
+            // height: 100.0,
+            child: ElevatedButton(
+                // ボタンの形状や背景色など
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[50], // background-color
+                  onPrimary: Colors.blue, //text-color
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  l10n.ui__signup__button2,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+
+                // ボタンクリック後にアカウント作成用の画面に遷移する。
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      fullscreenDialog: true,
+                      builder: (BuildContext context) => SigninScreen(),
+                    ),
+                  );
+                }),
+          ),
+        ),
+      ]),
     );
   }
 }

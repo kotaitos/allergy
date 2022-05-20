@@ -24,6 +24,7 @@
   "ui__signup__password": "Password (8 to 20 characters）",
   "ui__signup__verify_password": "password confirmation",
   "ui__signup__button1": "signup",
+  "ui__signup__button2": "Do you already have an account?",
   "ui__signup__password_is_not_matched": "Password does not match.",
   "ui__signup__password_is_not__8_or_more_characters": "Password must be at least 8 characters.",
 
