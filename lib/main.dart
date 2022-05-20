@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         home: MyStatefulWidget(),
         routes: <String, WidgetBuilder>{
           '/signin': (_) => SigninScreen(),
-          '/tab': (_) => MyStatefulWidget(),
+          '/home': (_) => MyStatefulWidget(),
         },
       );
     } else {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         home: SigninScreen(),
         routes: <String, WidgetBuilder>{
           '/signin': (_) => SigninScreen(),
-          '/tab': (_) => MyStatefulWidget(),
+          '/home': (_) => MyStatefulWidget(),
         },
       );
     }
