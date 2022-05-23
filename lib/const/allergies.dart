@@ -1,3 +1,6 @@
+import '../model/Allergy.dart';
+import '../model/AllergyName.dart';
+
 class Allergies {
   static List<Allergy> list = [
     Allergy(4868, 'f20', AllergyName('アーモンド')),
@@ -84,17 +87,4 @@ class Allergies {
     Allergy(4888, 'f77', AllergyName('β-ラクトグロブリン')),
     Allergy(4986, 'f416', AllergyName('ω-5グリアジン')),
   ];
-}
-
-class Allergy {
-  num code = 0;
-  String abbreviation = "";
-  AllergyName name = AllergyName("");
-
-  Allergy(this.code, this.abbreviation, this.name);
-}
-
-class AllergyName {
-  String ja = "";
-  AllergyName(this.ja);
 }
