@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
         title: 'allergy',
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
-        home: MyStatefulWidget(),
+        home: ButtomNavigationBar(),
         routes: <String, WidgetBuilder>{
           '/signin': (_) => SigninScreen(),
-          '/home': (_) => MyStatefulWidget(),
+          '/home': (_) => ButtomNavigationBar(),
         },
       );
     } else {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         home: SigninScreen(),
         routes: <String, WidgetBuilder>{
           '/signin': (_) => SigninScreen(),
-          '/home': (_) => MyStatefulWidget(),
+          '/home': (_) => ButtomNavigationBar(),
         },
       );
     }

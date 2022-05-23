@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../screens/home_screen.dart';
 import '../screens/accounts_screen.dart';
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+class ButtomNavigationBar extends StatefulWidget {
+  const ButtomNavigationBar({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<ButtomNavigationBar> createState() => _ButtomNavigationBarState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
   int _selectedIndex = 0;
   final _pageWidgets = [
     HomeScreen(),
@@ -27,6 +27,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text("allergy"),
+        automaticallyImplyLeading: false,
       ),
       body: _pageWidgets.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(

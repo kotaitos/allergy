@@ -1,9 +1,10 @@
-import 'package:allergy/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../ui/widgets/bottom_navigation_bar.dart';
 
 class Authentication {
   static SnackBar customSnackBar({required String content}) {
@@ -26,7 +27,7 @@ class Authentication {
     if (user != null) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => ButtomNavigationBar(),
         ),
       );
     }
