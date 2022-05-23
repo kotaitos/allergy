@@ -1,5 +1,5 @@
-import '../model/Allergy.dart';
-import '../model/AllergyName.dart';
+import 'package:allergy/model/Allergy.dart';
+import 'package:allergy/model/AllergyName.dart';
 
 class Allergies {
   static List<Allergy> list = [

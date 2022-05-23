@@ -1,4 +1,4 @@
-import 'AllergyName.dart';
+import 'package:allergy/model/AllergyName.dart';
 
 class Allergy {
   num code = 0;
