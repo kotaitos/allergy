@@ -1,5 +1,6 @@
 import 'package:allergy/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import '../../const/allergies.dart';
 
 class RegistrationModal extends StatelessWidget {
   const RegistrationModal({Key? key}) : super(key: key);
@@ -23,15 +24,21 @@ class RegistrationModal extends StatelessWidget {
               title: Text(l10n.views__registration_modal__title),
               centerTitle: true,
             ),
-            body: SafeArea(
-                child: Center(
-                    child: Column(mainAxisSize: MainAxisSize.min, children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 20.0),
-                child: Text(l10n.views__registration_modal__title,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold)),
-              ),
-            ])))));
+            body: ListView.builder(
+              itemCount: Allergies.list.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(color: Colors.black38),
+                      ),
+                    ),
+                    child: ListTile(
+                      leading: Text('$index'),
+                      title: Text(Allergies.list[index].name.ja),
+                      onTap: () {/* react to the tile being tapped */},
+                    ));
+              },
+            )));
   }
 }
