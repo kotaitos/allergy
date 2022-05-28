@@ -30,7 +30,7 @@ class RegistrationButton extends StatelessWidget {
             isScrollControlled: true,
             context: context,
             builder: (context) {
-              return const RegistrationModal();
+              return RegistrationModal();
             },
           );
         },
